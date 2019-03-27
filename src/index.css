@@ -9,4 +9,47 @@ html {
 body {
   margin: 0;
   min-height: 100%;
+  background-color: #d19c1d;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  background-color: #9be564;
+  border: solid 0.5rem #d7f75b;
+  border-radius: 0.5rem;
+  color: #472c1b;
+}
+
+ul {
+  background-color: #d7f75b;
+  border: solid 0.5rem #9be564;
+  border-radius: 0.5rem;
+}
+
+button {
+  background-color: #472c1b;
+  border: solid 0.25rem #7d451b;
+  border-radius: 0.5rem;
+  color: #9be564;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+h3 {
+  background-color: #7d451b;
+  border: solid 0.25rem #472c1b;
+  border-radius: 0.5rem;
+  color: #d7f75b;
 }

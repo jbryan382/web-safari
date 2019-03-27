@@ -68,35 +68,38 @@ class Animals extends Component {
   render() {
     return (
       <>
-        <h1>Place Animals Here</h1>
-        <section>
-          <h2>Be careful of all those animals out there:</h2>
-          <ul>
-            {this.state.animals.map((animal, i) => {
-              return <li key={i}>{this.state.animals[i].species}</li>
-            })}
-          </ul>
-          <section>
-            <h2>Especially in the Jungle:</h2>
-            {/* <button onClick={this.findByLocation}>Enter</button> */}
+        <main>
+          <h1>It's an Online Safari</h1>
+          <section className="all-animals">
+            <h2>Be careful of all those animals out there:</h2>
             <ul>
-              {this.state.animalLocation.map((animal, i) => {
-                return <li key={i}>{this.state.animalLocation[i].species}</li>
+              {this.state.animals.map((animal, i) => {
+                return <li key={i}>{this.state.animals[i].species}</li>
               })}
             </ul>
+            <section>
+              <h2>Especially in the Jungle:</h2>
+              <ul>
+                {this.state.animalLocation.map((animal, i) => {
+                  return <li key={i}>{this.state.animalLocation[i].species}</li>
+                })}
+              </ul>
+            </section>
+            <section className="buttons">
+              <button onClick={this.deleteLocation}>
+                Who needs Desert Animals... right?
+              </button>
+              <button onClick={this.countAnimals}>
+                Lets Count Together 1... 2.... 3....
+              </button>
+            </section>
+            <h3>Woah there were {this.state.totalNumberOfAnimals} animals!</h3>
+            <h3>
+              Bears, Tigers, and Lions Oh My there are {this.state.LTBCounter}{' '}
+              of them!
+            </h3>
           </section>
-
-          <section>
-            <button onClick={this.deleteLocation}>
-              Who needs Desert Animals... right?
-            </button>
-            <button onClick={this.countAnimals}>
-              Lets Count Together 1... 2.... 3....
-            </button>
-          </section>
-          <h3>{this.state.totalNumberOfAnimals}</h3>
-          <h3>{this.state.LTBCounter}</h3>
-        </section>
+        </main>
       </>
     )
   }
