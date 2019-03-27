@@ -7,10 +7,8 @@ class Animals extends Component {
     location: '',
     animalLocation: [],
     deleteLocation: [],
-    totalNumberOfAnimals: '',
-    animalsToCount: [],
-    lionTigerBear: '',
-    targetAnimals: []
+    totalNumberOfAnimals: 0,
+    LTBCounter: 0
   }
 
   componentDidMount() {
@@ -35,20 +33,35 @@ class Animals extends Component {
       })
   }
 
-  // countAnimals = () => {
-  //   let count = 0;
-  //   let LTBCount = 0;
+  countAnimals = () => {
+    let count = 0
+    let LTBCount = 0
 
-  // }
+    for (let i = 0; i < this.state.animals.length; i++) {
+      count += this.state.animals[i].countOfTimesSeen
+    }
+
+    for (let j = 0; j < this.state.animals.length; j++) {
+      if (
+        this.state.animals[j].species.toLowerCase() === 'Lion' ||
+        this.state.animals[j].species.toLowerCase() === 'tiger' ||
+        this.state.animals[j].species.toLowerCase() === 'Bear'
+      ) {
+        LTBCount += this.state.animals[j].countOfTimesSeen
+      }
+    }
+    this.setState({
+      totalNumberOfAnimals: count,
+      LTBCounter: LTBCount
+    })
+  }
 
   deleteLocation = () => {
     axios
-      .delete(`http://localhost:5001/api/Animals/location/desert`)
+      .delete(`https://localhost:5001/api/Animals/location/desert`)
       .then(resp => {
         console.log({ resp })
-        this.setState({
-          deleteLocation: resp.data
-        })
+        this.componentDidMount()
       })
   }
 
@@ -77,7 +90,12 @@ class Animals extends Component {
             <button onClick={this.deleteLocation}>
               Who needs Desert Animals... right?
             </button>
+            <button onClick={this.countAnimals}>
+              Lets Count Together 1... 2.... 3....
+            </button>
           </section>
+          <h3>{this.state.totalNumberOfAnimals}</h3>
+          <h3>{this.state.LTBCounter}</h3>
         </section>
       </>
     )
